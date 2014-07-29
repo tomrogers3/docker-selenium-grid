@@ -8,7 +8,7 @@ if [ "$2" != "" ]; then
 fi
 
 HUB_IMAGE="benschw/selenium-hub"
-NODE_IMAGE="benschw/selenium-node-firefox"
+NODE_IMAGE="tomrogers3/selenium-node-chrome"
 
 DEFAULT_NODES=3
 
