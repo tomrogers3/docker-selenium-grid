@@ -14,7 +14,7 @@ RUN apt-get install oracle-java7-installer -y
 
 RUN wget -P /opt https://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar
 
-RUN apt-get install -y chrome xvfb
+RUN apt-get install -y google-chrome-stable xvfb
 
 ADD start.sh /opt/start.sh
 
