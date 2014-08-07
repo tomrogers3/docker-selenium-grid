@@ -2,9 +2,14 @@
 
 FROM ubuntu
 
-RUN dpkg-divert --local --rename --add /sbin/initctl && ln -s /bin/true /sbin/initctl
+ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y software-properties-common python curl unzip
+RUN apt-get update
+
+RUN dpkg-divert --local --rename --add /sbin/initctl && rm /sbin/initctl && ln -s /bin/true /sbin/initctl
+
+RUN apt-get install -y dialog
+RUN apt-get install -y wget software-properties-common python curl unzip
 RUN add-apt-repository ppa:webupd8team/java
 
 # install Chrome dependencies
@@ -26,5 +31,7 @@ RUN apt-get install -y google-chrome-stable xvfb
 RUN wget -O /opt/chromedriver.zip http://chromedriver.storage.googleapis.com/2.10/chromedriver_linux64.zip && unzip /opt/chromedriver.zip -d /usr/local/bin && rm /opt/chromedriver.zip
 
 ADD start.sh /opt/start.sh
+
+ENV DEBIAN_FRONTEND newt
 
 CMD ["/bin/bash", "/opt/start.sh"]
