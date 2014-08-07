@@ -22,7 +22,7 @@ RUN echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-s
 RUN echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections
 RUN apt-get install oracle-java7-installer -y
 
-RUN wget -P /opt https://selenium.googlecode.com/files/selenium-server-standalone-2.37.0.jar
+RUN wget -P /opt https://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar
 
 # install Chrome
 RUN apt-get install -y google-chrome-stable xvfb
